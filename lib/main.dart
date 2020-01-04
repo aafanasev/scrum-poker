@@ -58,10 +58,10 @@ class FullCardRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return Scaffold(body: GestureDetector(
         child: PokerCard(value: value),
         onTap: () {
           Navigator.pop(context);
-        });
+        }));
   }
 }
