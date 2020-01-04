@@ -9,30 +9,32 @@ class HomeScreen extends StatelessWidget {
     ["13", "21", "∞"]
   ];
 
+  Widget _createRow(BuildContext context, List<String> rowValues) {
+    return Expanded(
+        child: Row(
+      children: rowValues.map((String value) {
+        return _createCardItem(context, value);
+      }).toList(),
+    ));
+  }
+
+    Widget _createCardItem(BuildContext context, String value) {
+    return Expanded(
+        child: GestureDetector(
+      child: PokerCard(value: value),
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => CardScreen(value: value)));
+      },
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("widget.title"),
-      ),
-      body: Column(
-          children: values.map((List<String> row) {
-        return Expanded(
-            child: Row(
-          children: row.map((String v) {
-            return Expanded(
-                child: GestureDetector(
-              child: PokerCard(value: v),
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CardScreen(value: v)));
-              },
-            ));
-          }).toList(),
-        ));
-      }).toList()),
-    );
+    return SafeArea(
+        child: Column(
+            children: values.map((List<String> rowValues) {
+      return _createRow(context, rowValues);
+    }).toList()));
   }
 }

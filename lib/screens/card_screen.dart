@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:scrum_poker/widgets/card.dart';
 
 class CardScreen extends StatelessWidget {
@@ -8,8 +8,8 @@ class CardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: GestureDetector(
+    return SafeArea(
+        child: GestureDetector(
             child: PokerCard(value: value),
             onTap: () {
               Navigator.pop(context);
