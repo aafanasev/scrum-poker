@@ -1,4 +1,4 @@
-package com.example.scrum_poker
+package dev.afanasev.scrumpoker
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
