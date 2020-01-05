@@ -7,17 +7,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return WidgetsApp(
       color: Color(0xFF000000),
-      routes: {
-        '/': (context) => HomeScreen(),
-        '/card': (context) => CardScreen(),
-      },
-      pageRouteBuilder: <Void>(settings, widgetBuilder) {
-        return PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) {
-            return widgetBuilder(context);
-          },
-        );
-      },
+      onGenerateRoute: (settings) => PageRouteBuilder(
+        settings: settings,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          switch (settings.name) {
+            case '/':
+              return HomeScreen();
+            case '/card':
+              return CardScreen();
+            default:
+              return null;
+          }
+        },
+      ),
     );
   }
 }
