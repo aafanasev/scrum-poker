@@ -19,6 +19,12 @@ class MyApp extends StatelessWidget {
               return null;
           }
         },
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
       ),
     );
   }
