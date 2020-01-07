@@ -22,15 +22,18 @@ class PokerCard extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: RotatedBox(
                 quarterTurns: 2,
-                child: Text(
-                  value,
-                  style: const TextStyle(fontSize: 24),
+                child: Container(
+                  height: double.infinity,
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text(value),
+                  ),
                 ),
               ),
             ),
           ),
           Expanded(
-            flex: 6,
+            flex: 5,
             child: FittedBox(
               fit: BoxFit.contain,
               child: Text(value),
@@ -40,9 +43,12 @@ class PokerCard extends StatelessWidget {
             flex: 1,
             child: Align(
               alignment: Alignment.bottomRight,
-              child: Text(
-                value,
-                style: const TextStyle(fontSize: 24),
+              child: Container(
+                height: double.infinity,
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: Text(value),
+                ),
               ),
             ),
           ),
