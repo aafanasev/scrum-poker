@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:scrum_poker/state/theme.dart';
 
 class PokerCard extends StatelessWidget {
   PokerCard({this.value});
@@ -7,9 +9,30 @@ class PokerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Consumer<ThemeModel>(
+      builder: (context, theme, _) {
+        Color bgColor;
+        Color textColor;
+
+        if (theme.isDarkMode) {
+          bgColor = Color(0xFF1d1d1d);
+          textColor = Color(0xFFFFFFFF);
+        } else {
+          bgColor = Color(0xFFFFFFFF);
+          textColor = Color(0xFF1d1d1d);
+        }
+
+        return _cardWidget(bgColor, textColor);
+      },
+    );
+  }
+
+  Widget _cardWidget(Color bgColor, Color textColor) {
+    return AnimatedContainer(
+      duration: const Duration(seconds: 1),
+      curve: Curves.fastOutSlowIn,
       decoration: BoxDecoration(
-        color: const Color(0xFF616161),
+        color: bgColor,
         borderRadius: const BorderRadius.all(const Radius.circular(10)),
       ),
       padding: EdgeInsets.all(10),
@@ -26,7 +49,12 @@ class PokerCard extends StatelessWidget {
                   height: double.infinity,
                   child: FittedBox(
                     fit: BoxFit.contain,
-                    child: Text(value),
+                    child: Text(
+                      value,
+                      style: TextStyle(
+                        color: textColor,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -36,7 +64,12 @@ class PokerCard extends StatelessWidget {
             flex: 5,
             child: FittedBox(
               fit: BoxFit.contain,
-              child: Text(value),
+              child: Text(
+                value,
+                style: TextStyle(
+                  color: textColor,
+                ),
+              ),
             ),
           ),
           Expanded(
@@ -47,7 +80,12 @@ class PokerCard extends StatelessWidget {
                 height: double.infinity,
                 child: FittedBox(
                   fit: BoxFit.contain,
-                  child: Text(value),
+                  child: Text(
+                    value,
+                    style: TextStyle(
+                      color: textColor,
+                    ),
+                  ),
                 ),
               ),
             ),

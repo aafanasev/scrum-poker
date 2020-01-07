@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:scrum_poker/state/theme.dart';
 import 'package:scrum_poker/widgets/card.dart';
 import 'package:scrum_poker/widgets/screen.dart';
 
@@ -33,10 +35,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Screen(
-      child: Column(
-        children: VALUES
-            .map((List<String> rowValues) => _createRow(context, rowValues))
-            .toList(),
+      child: GestureDetector(
+        onPanEnd: (details) {
+          Provider.of<ThemeModel>(context).toggleDarkMode();
+        },
+        child: Column(
+          children: VALUES
+              .map((List<String> rowValues) => _createRow(context, rowValues))
+              .toList(),
+        ),
       ),
     );
   }
