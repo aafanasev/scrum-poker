@@ -29,6 +29,7 @@ class PokerCard extends StatelessWidget {
 
   Widget _cardWidget(Color bgColor, Color textColor) {
     return AnimatedContainer(
+      key: Key("card_$value"),
       duration: const Duration(seconds: 1),
       curve: Curves.fastOutSlowIn,
       decoration: BoxDecoration(
