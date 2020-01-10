@@ -14,5 +14,4 @@ iOS: N/A
 
 |Dark|    |Light|   |
 |----|----|----|----|
-|Home|Card|Home|Card|
 |![1](./media/screenshots/screenshot_1.png)|![2](./media/screenshots/screenshot_2.png)|![3](./media/screenshots/screenshot_3.png)|![4](./media/screenshots/screenshot_4.png)|
