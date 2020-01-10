@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:scrum_poker/state/theme.dart';
 
@@ -52,8 +53,10 @@ class PokerCard extends StatelessWidget {
                     fit: BoxFit.contain,
                     child: Text(
                       value,
-                      style: TextStyle(
-                        color: textColor,
+                      style: GoogleFonts.alata(
+                        textStyle: TextStyle(
+                          color: textColor,
+                        ),
                       ),
                     ),
                   ),
@@ -67,8 +70,10 @@ class PokerCard extends StatelessWidget {
               fit: BoxFit.contain,
               child: Text(
                 value,
-                style: TextStyle(
-                  color: textColor,
+                style: GoogleFonts.alata(
+                  textStyle: TextStyle(
+                    color: textColor,
+                  ),
                 ),
               ),
             ),
@@ -83,8 +88,10 @@ class PokerCard extends StatelessWidget {
                   fit: BoxFit.contain,
                   child: Text(
                     value,
-                    style: TextStyle(
-                      color: textColor,
+                    style: GoogleFonts.alata(
+                      textStyle: TextStyle(
+                        color: textColor,
+                      ),
                     ),
                   ),
                 ),

@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^3.0.0
+  google_fonts: 0.3.2
 
 dev_dependencies:
   flutter_test:
