@@ -18,7 +18,7 @@ jobs:
     - uses: malinskiy/action-android/install-sdk@release/0.0.5
     - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
       with:
-        cmd: ./tools/take_screenshots.sh
+        cmd: ./tools/generate_screenshots.sh
         api: 25
         tag: default
         abi: x86
