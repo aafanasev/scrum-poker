@@ -10,7 +10,7 @@ jobs:
     runs-on: macos
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: subosito/flutter-action@v1
       with:
         channel: 'dev'
@@ -25,3 +25,6 @@ jobs:
     - uses: peter-evans/create-pull-request@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }} 
+        title: Screenshots
+        branch: screenshots
+        branch-suffix: timestamp
