@@ -1,0 +1,23 @@
+name: Take screenshots
+
+on: 
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+    runs-on: macos
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: steebchen/flutter@v1.0.0
+    - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
+      with:
+        cmd: ./tools/take_screenshots.sh
+        api: 25
+        tag: default
+        abi: x86
+    - uses: peter-evans/create-pull-request@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }} 
