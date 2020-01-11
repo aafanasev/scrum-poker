@@ -15,6 +15,7 @@ jobs:
       with:
         channel: 'dev'
     - run: flutter pub get
+    - uses: malinskiy/action-android/install-sdk@release/0.0.5
     - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
       with:
         cmd: ./tools/take_screenshots.sh
