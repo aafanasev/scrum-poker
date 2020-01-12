@@ -1,12 +1,14 @@
-name: Take screenshots
+name: Screenshots & Web
 
 on: 
   push:
     branches: 
       - master
+    paths:
+      - 'lib/**'
 
 jobs:
-  build:
+  screenshots:
     runs-on: macos
 
     steps:
@@ -26,5 +28,24 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }} 
         title: Screenshots
+        labels: actions, screenshots
         branch: screenshots
+        branch-suffix: timestamp
+  
+  web:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'dev'
+    - run: flutter pub get
+    - run: ./tools/build_web.sh
+    - uses: peter-evans/create-pull-request@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }} 
+        title: Web
+        labels: actions, web
+        branch: web
         branch-suffix: timestamp
