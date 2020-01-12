@@ -22,12 +22,12 @@ class PokerCard extends StatelessWidget {
           textColor = Color(0xFF1d1d1d);
         }
 
-        return _cardWidget(bgColor, textColor);
+        return _createCard(bgColor, textColor);
       },
     );
   }
 
-  Widget _cardWidget(Color bgColor, Color textColor) {
+  Widget _createCard(Color bgColor, Color textColor) {
     return AnimatedContainer(
       key: Key("card_$value"),
       duration: const Duration(seconds: 1),
@@ -36,8 +36,8 @@ class PokerCard extends StatelessWidget {
         color: bgColor,
         borderRadius: const BorderRadius.all(const Radius.circular(10)),
       ),
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(4),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(4),
       child: Column(
         children: <Widget>[
           Expanded(
@@ -48,34 +48,14 @@ class PokerCard extends StatelessWidget {
                 quarterTurns: 2,
                 child: Container(
                   height: double.infinity,
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: Text(
-                      value,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: textColor,
-                        fontFamily: "Alata",
-                      ),
-                    ),
-                  ),
+                  child: _createText(textColor),
                 ),
               ),
             ),
           ),
           Expanded(
             flex: 5,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Text(
-                value,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: textColor,
-                  fontFamily: "Alata",
-                ),
-              ),
-            ),
+            child: _createText(textColor),
           ),
           Expanded(
             flex: 1,
@@ -83,21 +63,25 @@ class PokerCard extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: Container(
                 height: double.infinity,
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Text(
-                    value,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: textColor,
-                      fontFamily: "Alata",
-                    ),
-                  ),
-                ),
+                child: _createText(textColor),
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _createText(Color textColor) {
+    return FittedBox(
+      fit: BoxFit.contain,
+      child: Text(
+        value,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: textColor,
+          fontFamily: "Alata",
+        ),
       ),
     );
   }
