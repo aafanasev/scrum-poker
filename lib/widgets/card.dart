@@ -10,7 +10,7 @@ class PokerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeModel>(
-      builder: (context, theme, _) {
+      builder: (context, theme, child) {
         Color bgColor;
         Color textColor;
 
