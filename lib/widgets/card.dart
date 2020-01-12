@@ -15,11 +15,11 @@ class PokerCard extends StatelessWidget {
         Color textColor;
 
         if (theme.isDarkMode) {
-          bgColor = Color(0xFF1d1d1d);
+          bgColor = Color(0xFF1D1D1D);
           textColor = Color(0xFFFFFFFF);
         } else {
           bgColor = Color(0xFFFFFFFF);
-          textColor = Color(0xFF1d1d1d);
+          textColor = Color(0xFF1D1D1D);
         }
 
         return _createCard(bgColor, textColor);
