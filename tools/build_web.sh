@@ -11,6 +11,6 @@ cp -a build/web/ docs/
 cp media/favicon.ico docs/
 
 # clean up
-rm docs/assets/LICENSE
-rm docs/main.dart.js.deps
-rm docs/main.dart.js.map
+rm -f docs/assets/LICENSE
+rm -f docs/main.dart.js.deps
+rm -f docs/main.dart.js.map
