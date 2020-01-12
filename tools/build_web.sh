@@ -7,8 +7,8 @@ flutter build web
 mkdir -p docs
 
 # copy files into docs
-cp -a build/web/ docs/
-cp media/favicon.ico docs/
+cp -av build/web/* docs/
+cp -v media/favicon.ico docs/
 
 # clean up
 rm -f docs/assets/LICENSE
