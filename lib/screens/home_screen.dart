@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:scrum_poker/state/theme.dart';
 import 'package:scrum_poker/widgets/card.dart';
 import 'package:scrum_poker/widgets/screen.dart';
+import 'package:wakelock/wakelock.dart';
 
 const VALUES = [
   ["0", "1", "2"],
@@ -26,7 +27,9 @@ class HomeScreen extends StatelessWidget {
       child: GestureDetector(
         child: PokerCard(value: value),
         onTap: () {
-          Navigator.pushNamed(context, "/card", arguments: value);
+          Navigator.pushNamed(context, "/card", arguments: value).then((_) {
+            Wakelock.disable();
+          });
         },
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:scrum_poker/screens/card_screen.dart';
 import 'package:scrum_poker/screens/home_screen.dart';
-import 'package:wakelock/wakelock.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -11,8 +10,6 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (settings) => PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation, secondaryAnimation) {
-          Wakelock.toggle(on: settings.name == '/card');
-
           switch (settings.name) {
             case '/':
               return HomeScreen();
