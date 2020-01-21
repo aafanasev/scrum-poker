@@ -1,0 +1,3 @@
+Font: DIN Condensed
+Text Color: #FFFFFF
+Bg Color: #121212
