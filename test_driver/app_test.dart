@@ -7,6 +7,11 @@ const SCREENSHOTS_DIR = "media/screenshots";
 
 void main() {
   group("scrum_poker", () {
+    var filename = Platform.environment["SCREENSHOTS_NAME"];
+    if (filename?.isEmpty ?? true) {
+      filename = "screenshot";
+    }
+
     final card = find.byValueKey("card_5");
 
     FlutterDriver driver;
@@ -24,23 +29,23 @@ void main() {
     });
 
     test("screenshot_1", () async {
-      await takeScreenshot(driver, "$SCREENSHOTS_DIR/screenshot_1.png");
+      await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_1.png");
     });
 
     test("screenshot_2", () async {
       await driver.tap(card);
-      await takeScreenshot(driver, "$SCREENSHOTS_DIR/screenshot_2.png");
+      await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_2.png");
       await driver.tap(card);
     });
 
     test("screenshot_3", () async {
       await driver.scroll(card, 100, 0, Duration(milliseconds: 300));
-      await takeScreenshot(driver, "$SCREENSHOTS_DIR/screenshot_3.png");
+      await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_3.png");
     });
 
     test("screenshot_4", () async {
       await driver.tap(card);
-      await takeScreenshot(driver, "$SCREENSHOTS_DIR/screenshot_4.png");
+      await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_4.png");
     });
   });
 }

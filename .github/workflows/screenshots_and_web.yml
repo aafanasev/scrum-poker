@@ -21,14 +21,14 @@ jobs:
     - uses: malinskiy/action-android/install-sdk@release/0.0.5
     - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
       with:
-        cmd: ./tools/generate_screenshots.sh phone_
+        cmd: ./tools/take_screenshots.sh phone
         api: 25
         tag: default
         abi: x86
         hardwareProfile: pixel
     - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
       with:
-        cmd: ./tools/generate_screenshots.sh tablet_
+        cmd: ./tools/take_screenshots.sh tablet
         api: 25
         tag: default
         abi: x86
