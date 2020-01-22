@@ -21,10 +21,18 @@ jobs:
     - uses: malinskiy/action-android/install-sdk@release/0.0.5
     - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
       with:
-        cmd: ./tools/generate_screenshots.sh
+        cmd: ./tools/generate_screenshots.sh phone_
         api: 25
         tag: default
         abi: x86
+        hardwareProfile: pixel
+    - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
+      with:
+        cmd: ./tools/generate_screenshots.sh tablet_
+        api: 25
+        tag: default
+        abi: x86
+        hardwareProfile: 10.1in WXGA (Tablet)
     - uses: peter-evans/create-pull-request@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }} 
