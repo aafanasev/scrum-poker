@@ -18,7 +18,9 @@ jobs:
       with:
         channel: 'beta'
     - run: flutter pub get
-    - uses: malinskiy/action-android/install-sdk@release/0.0.5
+    - name: Install Android SDK
+      uses: malinskiy/action-android/install-sdk@release/0.0.5
+    - name: Phone screenshots
     - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
       with:
         cmd: ./tools/take_screenshots.sh phone
@@ -26,13 +28,16 @@ jobs:
         tag: default
         abi: x86
         hardwareProfile: pixel
-    - uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
+    - name: Remove previous emulator
+      run: $ANDROID_HOME/tools/bin/avdmanager delete avd -n emulator
+    - name: Tablet screenshots
+      uses: malinskiy/action-android/emulator-run-cmd@release/0.0.5
       with:
         cmd: ./tools/take_screenshots.sh tablet
         api: 25
         tag: default
         abi: x86
-        hardwareProfile: "10.1in WXGA (Tablet)"
+        hardwareProfile: 34
     - uses: peter-evans/create-pull-request@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }} 
