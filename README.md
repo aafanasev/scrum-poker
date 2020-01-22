@@ -14,4 +14,4 @@ iOS: N/A
 
 |Dark|    |Light|   |
 |----|----|----|----|
-|![1](./media/screenshots/screenshot_1.png)|![2](./media/screenshots/screenshot_2.png)|![3](./media/screenshots/screenshot_3.png)|![4](./media/screenshots/screenshot_4.png)|
+|![1](./media/screenshots/phone_1.png)|![2](./media/screenshots/phone_2.png)|![3](./media/screenshots/phone_3.png)|![4](./media/screenshots/phone_4.png)|
