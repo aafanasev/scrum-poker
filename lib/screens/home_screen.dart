@@ -31,6 +31,9 @@ class HomeScreen extends StatelessWidget {
             Wakelock.disable();
           });
         },
+        onLongPress: () {
+          Navigator.pushNamed(context, "/edit", arguments: value);
+        },
       ),
     );
   }
