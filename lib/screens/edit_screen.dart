@@ -9,6 +9,23 @@ class EditScreen extends StatefulWidget {
 class _EditScreenState extends State<EditScreen> {
   TextEditingController _controller;
 
+  final _labelTextStyle = TextStyle(
+    color: const Color(0xFFFFFFFF),
+    fontFamily: "Alata",
+    fontSize: 20,
+  );
+
+  final _valueTextStyle = TextStyle(
+    color: const Color(0xFFFFFFFF),
+    fontFamily: "Alata",
+    fontSize: 60,
+  );
+
+  final _valueBoxDecoration = BoxDecoration(
+    color: const Color(0xFF000000),
+    borderRadius: const BorderRadius.all(const Radius.circular(10)),
+  );
+
   @override
   void initState() {
     _controller = TextEditingController();
@@ -26,15 +43,35 @@ class _EditScreenState extends State<EditScreen> {
     return Screen(
       child: Column(
         children: [
+          Text(
+            "Previous value:",
+            style: _labelTextStyle,
+          ),
+          Container(
+            child: Text(
+              _controller.text,
+              textAlign: TextAlign.center,
+              style: _valueTextStyle,
+            ),
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.only(
+              left: 4,
+              right: 4,
+              top: 4,
+              bottom: 20,
+            ),
+            decoration: _valueBoxDecoration,
+            width: double.infinity,
+          ),
+          Text(
+            "New value:",
+            style: _labelTextStyle,
+          ),
           Container(
             child: EditableText(
               controller: _controller,
               focusNode: FocusNode(),
-              style: const TextStyle(
-                color: const Color(0xFFFFFFFF),
-                fontFamily: "Alata",
-                fontSize: 60,
-              ),
+              style: _valueTextStyle,
               textAlign: TextAlign.center,
               cursorColor: const Color(0xFFFFFFFF),
               backgroundCursorColor: const Color(0xFFFFFFFF),
@@ -43,12 +80,14 @@ class _EditScreenState extends State<EditScreen> {
               enableSuggestions: false,
               maxLines: 1,
             ),
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: const Color(0xFF000000),
-              borderRadius: const BorderRadius.all(const Radius.circular(10)),
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.only(
+              left: 4,
+              right: 4,
+              top: 4,
+              bottom: 20,
             ),
+            decoration: _valueBoxDecoration,
           ),
           _createButtons(),
         ],
@@ -103,7 +142,7 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   void _doAction(String action) {
-    print("$action clicked");
+    Navigator.pop(context, MapEntry(action, _controller.text));
   }
 
   @override

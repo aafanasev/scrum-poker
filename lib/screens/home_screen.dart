@@ -31,8 +31,9 @@ class HomeScreen extends StatelessWidget {
             Wakelock.disable();
           });
         },
-        onLongPress: () {
-          Navigator.pushNamed(context, "/edit", arguments: value);
+        onLongPress: () async {
+          final result = await Navigator.pushNamed(context, "/edit", arguments: value);
+          print(result);
         },
       ),
     );
