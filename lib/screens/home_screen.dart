@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:scrum_poker/screens/edit_screen.dart';
 import 'package:scrum_poker/state/theme.dart';
 import 'package:scrum_poker/widgets/card.dart';
 import 'package:scrum_poker/widgets/screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wakelock/wakelock.dart';
+
+const KEY_ITEMS = "items";
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -20,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     _items = SharedPreferences.getInstance().then((prefs) {
-      var savedItems = prefs.getStringList("items");
+      var savedItems = prefs.getStringList(KEY_ITEMS);
       if (savedItems == null || savedItems.isEmpty) {
         return ["0", "1", "2", "3", "5", "8", "13", "21", "∞"];
       } else {
@@ -93,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
           var result =
               await Navigator.pushNamed(context, "/edit", arguments: value);
 
-          if (result != null && result is MapEntry<String, String>) {
+          if (result != null && result is MapEntry<EditAction, String>) {
             _saveAndUpdate(result.key, index, result.value);
           }
         },
@@ -101,18 +104,18 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _saveAndUpdate(String action, int index, String newValue) async {
+  void _saveAndUpdate(EditAction action, int index, String newValue) async {
     var prefs = await SharedPreferences.getInstance();
     var currentItems = await _items;
 
     switch (action) {
-      case "add":
+      case EditAction.add:
         currentItems.insert(index + 1, newValue);
         break;
-      case "upd":
+      case EditAction.update:
         currentItems[index] = newValue;
         break;
-      case "del":
+      case EditAction.delete:
         if (currentItems.length > 1) {
           currentItems.removeAt(index);
         }
@@ -120,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     setState(() {
-      _items = prefs.setStringList("items", currentItems).then((_) {
+      _items = prefs.setStringList(KEY_ITEMS, currentItems).then((_) {
         return currentItems;
       });
     });
