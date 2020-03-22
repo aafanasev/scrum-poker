@@ -51,8 +51,7 @@ void main() {
 
     test("screenshot_5", () async {
       // long press
-      final top = await driver.getCenter(card);
-      await driver.scroll(card, top.dx, top.dy, Duration(milliseconds: 300));
+      await driver.scroll(card, 0, 0, Duration(milliseconds: 500));
 
       await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_5.png");
       await driver.tap(find.byValueKey("btn_save"));
@@ -62,8 +61,7 @@ void main() {
       await driver.scroll(card, 100, 0, Duration(milliseconds: 300));
 
       // long press
-      final top = await driver.getCenter(card);
-      await driver.scroll(card, top.dx, top.dy, Duration(milliseconds: 300));
+      await driver.scroll(card, 0, 0, Duration(milliseconds: 500));
 
       await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_6.png");
       await driver.tap(find.byValueKey("btn_save"));
