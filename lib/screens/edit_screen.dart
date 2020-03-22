@@ -131,6 +131,7 @@ class _EditScreenState extends State<EditScreen> {
       children: [
         Expanded(
           child: GestureDetector(
+            key: Key("btn_save"),
             child: _createButton("Save", textColor, bgColor),
             onTap: () => _doAction(EditAction.update),
           ),

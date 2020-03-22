@@ -46,6 +46,27 @@ void main() {
     test("screenshot_4", () async {
       await driver.tap(card);
       await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_4.png");
+      await driver.tap(card);
+    });
+
+    test("screenshot_5", () async {
+      // long press
+      final top = await driver.getCenter(card);
+      await driver.scroll(card, top.dx, top.dy, Duration(milliseconds: 300));
+
+      await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_5.png");
+      await driver.tap(find.byValueKey("btn_save"));
+    });
+
+    test("screenshot_6", () async {
+      await driver.scroll(card, 100, 0, Duration(milliseconds: 300));
+
+      // long press
+      final top = await driver.getCenter(card);
+      await driver.scroll(card, top.dx, top.dy, Duration(milliseconds: 300));
+
+      await takeScreenshot(driver, "$SCREENSHOTS_DIR/${filename}_6.png");
+      await driver.tap(find.byValueKey("btn_save"));
     });
   });
 }
