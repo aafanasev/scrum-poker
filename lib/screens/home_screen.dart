@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:scrum_poker/screens/edit_screen.dart';
 import 'package:scrum_poker/state/theme.dart';
+import 'package:scrum_poker/util/list_apis.dart';
 import 'package:scrum_poker/widgets/card.dart';
 import 'package:scrum_poker/widgets/screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,17 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
         child: FutureBuilder<List<String>>(
           future: _items,
           builder: (context, snapshot) {
-            List<List<String>> rows = [];
-            for (var i = 0; i < snapshot.data.length; i += 3) {
-              var endIndex = i + 3;
-              if (endIndex > snapshot.data.length) {
-                endIndex = snapshot.data.length;
-              }
-              rows.add(snapshot.data.sublist(i, endIndex));
-            }
-
             return Column(
-              children: rows
+              children: ListUtil.chunk(snapshot.data, 3)
                   .asMap()
                   .entries
                   .map((entry) => _createRow(context, entry.key, entry.value))
