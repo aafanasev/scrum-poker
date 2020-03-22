@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:scrum_poker/screens/card_screen.dart';
+import 'package:scrum_poker/screens/edit_screen.dart';
 import 'package:scrum_poker/screens/home_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
               return HomeScreen();
             case '/card':
               return CardScreen();
+            case '/edit':
+              return EditScreen();
             default:
               return null;
           }

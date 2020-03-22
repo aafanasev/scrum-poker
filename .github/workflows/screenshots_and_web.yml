@@ -18,6 +18,7 @@ jobs:
       with:
         channel: 'beta'
     - run: flutter pub get
+    - run: ./tools/run_test.sh
     - name: Install Android SDK
       uses: malinskiy/action-android/install-sdk@release/0.0.5
     - name: Phone screenshots
