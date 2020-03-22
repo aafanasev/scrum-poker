@@ -119,7 +119,7 @@ class _EditScreenState extends State<EditScreen> {
             ),
             _createButtons(btnTextColor, btnBgColor),
           ],
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
         );
       }),
