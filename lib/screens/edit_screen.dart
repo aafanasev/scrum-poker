@@ -103,13 +103,13 @@ class _EditScreenState extends State<EditScreen> {
         Expanded(
           child: GestureDetector(
             child: _createButton("Save"),
-            onTap: () => _doAction("add"),
+            onTap: () => _doAction("upd"),
           ),
         ),
         Expanded(
           child: GestureDetector(
             child: _createButton("+ Save as a new"),
-            onTap: () => _doAction("upd"),
+            onTap: () => _doAction("add"),
           ),
         ),
         Expanded(
