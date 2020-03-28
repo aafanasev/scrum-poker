@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   provider: ^3.0.0
   wakelock: ^0.1.3+3
   shared_preferences: 0.5.6+3
@@ -26,3 +28,8 @@ flutter:
     - family: Alata
       fonts:
         - asset: fonts/Alata-Regular.ttf
+  plugin:
+    platforms:
+      web:
+        pluginClass: WakelockPlugin
+        fileName: ext/wakelock_web.dart
