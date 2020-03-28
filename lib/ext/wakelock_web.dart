@@ -1,7 +1,10 @@
+import 'dart:js' as js;
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 class WakelockPlugin {
+  bool _enabled;
+
   static void registerWith(Registrar registrar) {
     final MethodChannel channel = MethodChannel(
       "wakelock",
@@ -17,21 +20,34 @@ class WakelockPlugin {
   Future<dynamic> _handleMethodCall(MethodCall call) async {
     switch (call.method) {
       case "toggle":
-        _toggle(call.arguments["enable"]);
+        return _toggle(call.arguments["enable"]);
         break;
       case "enable":
-        _toggle(true);
+        return _toggle(true);
         break;
       case "disable":
-        _toggle(false);
+        return _toggle(false);
         break;
       case "isEnabled":
-        return true;
+        return _enabled;
         break;
+      default:
+        throw PlatformException(
+          code: "NotImplemented",
+          details: "Unknown method: '${call.method}'",
+        );
     }
   }
 
-  void _toggle(bool on) {
-    print("asd $on");
+  bool _toggle(bool on) {
+    _enabled = on;
+
+    if (on) {
+      js.context["noSleep"].callMethod("enable", []);
+    } else {
+      js.context["noSleep"].callMethod("disable", []);
+    }
+
+    return true;
   }
 }
