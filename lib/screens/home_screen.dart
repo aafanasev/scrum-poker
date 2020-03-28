@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:scrum_poker/screens/edit_screen.dart';
@@ -74,14 +73,10 @@ class _HomeScreenState extends State<HomeScreen> {
       child: GestureDetector(
         child: PokerCard(value: value),
         onTap: () {
-          if (!kIsWeb) {
-            Wakelock.enable();
-          }
+          Wakelock.enable();
 
           Navigator.pushNamed(context, "/card", arguments: value).then((_) {
-            if (!kIsWeb) {
-              Wakelock.disable();
-            }
+            Wakelock.disable();
           });
         },
         onLongPress: () async {
